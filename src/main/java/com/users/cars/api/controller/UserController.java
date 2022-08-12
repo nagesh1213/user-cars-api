@@ -1,7 +1,6 @@
 package com.users.cars.api.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +35,7 @@ public class UserController {
 	@GetMapping("/users/{id}")
 	public ResponseEntity<User> fetchUserById(@PathVariable Long id) {
 		log.info("Inside controller fetching user by id...");
-		Optional<User> user = iUserService.fetchUserById(id);
+		var user = iUserService.fetchUserById(id);
 		if (user.isPresent())
 			return ResponseEntity.ok().body(user.get());
 		return ResponseEntity.notFound().build();
@@ -45,7 +44,7 @@ public class UserController {
 	@GetMapping("/users/{userId}/cars")
 	public ResponseEntity<List<Car>> fetchCarsByUserId(@PathVariable Long userId) {
 		log.info("Inside controller fetching cars by user id...");
-		List<Car> cars = iUserService.fetchCarsByUserId(userId);
+		var cars = iUserService.fetchCarsByUserId(userId);
 		if (!cars.isEmpty())
 			return ResponseEntity.ok().body(cars);
 		return ResponseEntity.notFound().build();
@@ -61,7 +60,7 @@ public class UserController {
 	@GetMapping("/cars/{id}")
 	public ResponseEntity<Car> fetchCarById(@PathVariable Long id) {
 		log.info("Inside controller fetching cars by id...");
-		Optional<Car> car = iUserService.fetchCarById(id);
+		var car = iUserService.fetchCarById(id);
 		if (car.isPresent())
 			return ResponseEntity.ok().body(car.get());
 		return ResponseEntity.notFound().build();
