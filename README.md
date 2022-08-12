@@ -4,6 +4,6 @@ Need to update Mysql DB credential in application.properties to successfully exe
 
 Required Tool to run :
 
-Jdk 11
-Eclipse/STS IDE
-Mysql 8
+#Jdk 11
+#Eclipse/STS IDE
+#Mysql 8
