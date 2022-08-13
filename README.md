@@ -22,3 +22,13 @@
 
 
 ===========================================
+
+All GET Rest Endpoint :
+
+host = http://localhost:8080
+
+1) host/v1/api/users/1
+2) host/v1/api/users/1/cars
+3) host/v1/api/cars/1
+4) host/v1/api/cars
+5) host/v1/api/users?find=teet&sort=name:asc
