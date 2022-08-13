@@ -36,7 +36,7 @@ public class UserService implements IUserService {
 		} else if (!ObjectUtils.isEmpty(lookupString) && !ObjectUtils.isEmpty(sortOrder)
 				&& "DESC".equalsIgnoreCase(sortOrder)) {
 			return userRepository.findByNameContainingIgnoreCase(lookupString).stream()
-					.sorted(Comparator.comparing(User::getName)).collect(Collectors.toList());
+					.sorted(Comparator.comparing(User::getName).reversed()).collect(Collectors.toList());
 		} else if (!ObjectUtils.isEmpty(lookupString)) {
 			return userRepository.findByNameContainingIgnoreCase(lookupString).stream().collect(Collectors.toList());
 		} else if (!ObjectUtils.isEmpty(sortOrder) && "DESC".equalsIgnoreCase(sortOrder)) {
