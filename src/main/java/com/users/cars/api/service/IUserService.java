@@ -8,13 +8,13 @@ import com.users.cars.api.domain.User;
 
 public interface IUserService {
 
-	List<User> fetchAllUsers(String lookupString, String sortOrder);
+	List<User> fetchAllUsers(String lookupString, String sortOrder, int pageNo);
 
 	Optional<User> fetchUserById(Long id);
 
 	List<Car> fetchCarsByUserId(Long id);
 
-	List<Car> fetchAllCars(String lookupString, String sortOrder);
+	List<Car> fetchAllCars(String lookupString, String sortOrder, int pageNo);
 
 	Optional<Car> fetchCarById(Long id);
 

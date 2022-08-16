@@ -25,10 +25,12 @@ public class UserController {
 	private IUserService iUserService;
 
 	@GetMapping("/users")
-	public ResponseEntity<List<User>> fetchAllUsers(@RequestParam(value = "find", required = false) String lookupString,
+	public ResponseEntity<List<User>> fetchAllUsers(
+			@RequestParam(value = "pageNo", required = false, defaultValue = "1") int pageNo,
+			@RequestParam(value = "find", required = false) String lookupString,
 			@RequestParam(value = "sort", required = false, defaultValue = "id:asc") String sortOrder) {
 		log.info("Inside controller fetching all users...");
-		return ResponseEntity.ok(iUserService.fetchAllUsers(lookupString, sortOrder));
+		return ResponseEntity.ok(iUserService.fetchAllUsers(lookupString, sortOrder, pageNo));
 
 	}
 
@@ -51,10 +53,12 @@ public class UserController {
 	}
 
 	@GetMapping("/cars")
-	public ResponseEntity<List<Car>> fetchAllCars(@RequestParam(value = "find", required = false) String lookupString,
+	public ResponseEntity<List<Car>> fetchAllCars(
+			@RequestParam(value = "pageNo", required = false, defaultValue = "1") int pageNo,
+			@RequestParam(value = "find", required = false) String lookupString,
 			@RequestParam(value = "sort", required = false, defaultValue = "id:asc") String sortOrder) {
 		log.info("Inside controller fetching all cars...");
-		return ResponseEntity.ok().body(iUserService.fetchAllCars(lookupString, sortOrder));
+		return ResponseEntity.ok().body(iUserService.fetchAllCars(lookupString, sortOrder, pageNo));
 	}
 
 	@GetMapping("/cars/{id}")
