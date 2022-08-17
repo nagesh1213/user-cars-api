@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
@@ -36,8 +37,8 @@ public class UserService implements IUserService {
 		log.info("Inside service fetch all users....");
 		String order = sortOrder.split(":")[1];
 		String sortByField = sortOrder.split(":")[0];
-		Pageable pageable = PageRequest.of(pageNo - 1, PAGE_SIZE,
-				DESC.equalsIgnoreCase(order) ? Sort.Direction.DESC : Sort.Direction.ASC, sortByField);
+		Direction direction = DESC.equalsIgnoreCase(order) ? Sort.Direction.DESC : Sort.Direction.ASC;
+		Pageable pageable = PageRequest.of(pageNo - 1, PAGE_SIZE, direction, sortByField);
 		if (!ObjectUtils.isEmpty(lookupString)) {
 			return userRepository.findByLookupString(lookupString, pageable).getContent();
 		}
@@ -61,8 +62,8 @@ public class UserService implements IUserService {
 		log.info("Inside service fetch all cars....");
 		String order = sortOrder.split(":")[1];
 		String sortByField = sortOrder.split(":")[0];
-		Pageable pageable = PageRequest.of(pageNo - 1, PAGE_SIZE,
-				DESC.equalsIgnoreCase(order) ? Sort.Direction.DESC : Sort.Direction.ASC, sortByField);
+		Direction direction = DESC.equalsIgnoreCase(order) ? Sort.Direction.DESC : Sort.Direction.ASC;
+		Pageable pageable = PageRequest.of(pageNo - 1, PAGE_SIZE, direction, sortByField);
 		if (!ObjectUtils.isEmpty(lookupString)) {
 			return carsRepository.findByLookupString(lookupString, pageable).getContent();
 		}
